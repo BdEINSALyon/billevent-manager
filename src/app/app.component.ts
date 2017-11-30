@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
