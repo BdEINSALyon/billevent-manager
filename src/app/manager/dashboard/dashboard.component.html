@@ -3,9 +3,12 @@
     <app-header></app-header>
   </nb-layout-header>
 
-  <nb-sidebar>Sidebar Content</nb-sidebar>
+  <nb-sidebar>
+    <nb-menu [items]="menu"></nb-menu>
+    <nb-sidebar-footer></nb-sidebar-footer>
+  </nb-sidebar>
 
   <nb-layout-column>
-
-    Page Content</nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
 </nb-layout>

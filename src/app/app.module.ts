@@ -12,6 +12,7 @@ import { NbLoginComponent } from './auth/login/login.component';
 import { NbLogoutComponent } from './auth/logout/logout.component';
 import {BilleventAuthService} from './auth/billevent-auth.service';
 import {AuthModule} from "./auth/auth.module";
+import {JwtModule} from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -38,6 +39,15 @@ import {AuthModule} from "./auth/auth.module";
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbSidebarModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('auth_app_token');
+        },
+        authScheme: 'JWT ',
+        whitelistedDomains: ['localhost:8000', 'api.billevent.bde-insa-lyon.fr']
+      }
+    })
 
   ],
   providers: [NbSidebarService],

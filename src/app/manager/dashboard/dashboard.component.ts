@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NbMenuItem} from '@nebular/theme';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  menu: NbMenuItem[] = [
+    {title: 'Dashboard', link: '/', pathMatch: 'full'},
+    {title: 'Invitation', link: '/invitations', pathMatch: 'full'},
+    {title: 'Admin'},
+  ];
 
   constructor() { }
 
