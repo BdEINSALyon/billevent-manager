@@ -9,7 +9,21 @@ import {NgEmailPassAuthProviderConfig} from '@nebular/auth/providers/email-pass-
 import {NbAuthResult} from '@nebular/auth/services/auth.service';
 import {NbAbstractAuthProvider} from '@nebular/auth/providers/abstract-auth.provider';
 import {getDeepFromObject} from '@nebular/auth/helpers';
+import {environment} from '../../environments/environment';
+import {NbAuthJWTToken, NbAuthSimpleToken} from '@nebular/auth';
 
+
+export class BilleventTokenService extends NbAuthJWTToken {
+
+  setValue(token: string): void {
+    alert(token);
+    localStorage.setItem('auth_token', token);
+  }
+
+  getValue(): string {
+    return localStorage.getItem('auth_token');
+  }
+}
 
 /**
  *
@@ -17,34 +31,25 @@ import {getDeepFromObject} from '@nebular/auth/helpers';
 @Injectable()
 export class BilleventAuthService extends NbAbstractAuthProvider {
   protected defaultConfig: NgEmailPassAuthProviderConfig = {
-    baseEndpoint: '',
+    baseEndpoint: environment.BilleventApi,
     login: {
       alwaysFail: false,
       rememberMe: true,
-      endpoint: '/api/auth/login',
+      endpoint: '/authenticate',
       method: 'post',
       redirect: {
         success: '/',
         failure: null,
       },
-      defaultErrors: ['Login/Email combination is not correct, please try again.'],
-      defaultMessages: ['You have been successfully logged in.'],
+      defaultErrors: ['Identifiants non valides.'],
     },
     register: {
-      alwaysFail: false,
-      rememberMe: true,
-      endpoint: '/api/auth/register',
-      method: 'post',
-      redirect: {
-        success: '/',
-        failure: null,
-      },
-      defaultErrors: ['Something went wrong, please try again.'],
-      defaultMessages: ['You have been successfully registered.'],
+      alwaysFail: true,
+      defaultErrors: ['Impossible de s\'inscrire depuis ce site.'],
     },
     logout: {
       alwaysFail: false,
-      endpoint: '/api/auth/logout',
+      endpoint: '/authenticate/logout',
       method: 'delete',
       redirect: {
         success: '/',
@@ -53,29 +58,8 @@ export class BilleventAuthService extends NbAbstractAuthProvider {
       defaultErrors: ['Something went wrong, please try again.'],
       defaultMessages: ['You have been successfully logged out.'],
     },
-    requestPass: {
-      endpoint: '/api/auth/request-pass',
-      method: 'post',
-      redirect: {
-        success: '/',
-        failure: null,
-      },
-      defaultErrors: ['Something went wrong, please try again.'],
-      defaultMessages: ['Reset password instructions have been sent to your email.'],
-    },
-    resetPass: {
-      endpoint: '/api/auth/reset-pass',
-      method: 'put',
-      redirect: {
-        success: '/',
-        failure: null,
-      },
-      resetPasswordTokenKey: 'reset_password_token',
-      defaultErrors: ['Something went wrong, please try again.'],
-      defaultMessages: ['Your password has been successfully changed.'],
-    },
     token: {
-      key: 'data.token',
+      key: 'token',
       getter: (module: string, res: HttpResponse<Object>) => getDeepFromObject(res.body,
         this.getConfigValue('token.key')),
     },

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NbLoginComponent } from './auth/login/login.component';
 import { NbLogoutComponent } from './auth/logout/logout.component';
 import {NbAuthComponent} from '@nebular/auth';
+import {ManagerModule} from './manager/manager.module';
 
 const routes: Routes = [
 
@@ -24,10 +25,14 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '',
+    loadChildren: () => ManagerModule
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ManagerModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

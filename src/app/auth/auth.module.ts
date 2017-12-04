@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {BilleventAuthService} from "./billevent-auth.service";
+import {BilleventAuthService, BilleventTokenService} from './billevent-auth.service';
+import {NB_AUTH_TOKEN_WRAPPER_TOKEN} from '@nebular/auth';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {BilleventAuthService} from "./billevent-auth.service";
   declarations: [
   ],
   providers: [
-    BilleventAuthService
+    BilleventAuthService,
+    { provide: NB_AUTH_TOKEN_WRAPPER_TOKEN, useClass: BilleventTokenService },
   ]
 })
 export class AuthModule { }

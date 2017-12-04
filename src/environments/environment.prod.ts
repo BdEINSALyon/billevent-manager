@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  BilleventApi: 'https://api.billetterie.bde-insa-lyon.fr/api'
 };
