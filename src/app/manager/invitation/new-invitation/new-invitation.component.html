@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-header><h2>Ajouter des invitations</h2></nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="invitationForm">
+      <div class="form-group">
+        <label for="event">Evènement :</label>
+        <select class="form-control" name="event" id="event" required>
+          <option *ngFor="let event of events" [value]="event.id">{{event.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="file">Fichier :</label>
+        <input type="file" class="form-control" id="file" name="file">
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-4 offset-md-4">
+          <button class="btn btn-primary btn-block">Importer</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

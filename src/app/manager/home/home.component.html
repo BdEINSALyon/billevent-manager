@@ -1,0 +1,9 @@
+<nb-card>
+  <nb-card-header>Accueil</nb-card-header>
+  <nb-card-body>
+    <h2>Vos évènements</h2>
+    <ul>
+      <li *ngFor="let event of events">{{event.name}}</li>
+    </ul>
+  </nb-card-body>
+</nb-card>

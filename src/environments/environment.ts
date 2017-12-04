@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  BilleventApi: 'http://localhost:8000/api'
+  BilleventApi: 'http://localhost:8000/api',
+  BilleventFrontend: 'http://localhost:4201/',
 };

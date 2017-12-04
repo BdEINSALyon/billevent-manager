@@ -1,26 +1,51 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ManagerRoutingModule} from './manager-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import {NbActionsModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbSidebarService, NbUserModule} from '@nebular/theme';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {NbActionsModule, NbCardModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbSidebarService, NbUserModule} from '@nebular/theme';
 import {NbUser} from '@nebular/auth/models/user';
-import { HeaderComponent } from './layout/header/header.component';
+import {HeaderComponent} from './layout/header/header.component';
 import {UserService} from './data/user.service';
 import {JwtModule} from '@auth0/angular-jwt';
-import { InvitationComponent } from './invitation/invitation.component';
-import { HomeComponent } from './home/home.component';
+import {InvitationComponent, InvitationLinkComponent} from './invitation/invitation.component';
+import {HomeComponent} from './home/home.component';
+import {InvitationsService} from './invitation/invitations.service';
+import {EventsService} from './data/events.service';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NewInvitationComponent } from './invitation/new-invitation/new-invitation.component';
+import { EditInvitationComponent } from './invitation/edit-invitation/edit-invitation.component';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     NbActionsModule,
     NbLayoutModule,
     NbSidebarModule,
     NbMenuModule,
+    NbCardModule,
     NbUserModule,
-    ManagerRoutingModule
+    ManagerRoutingModule,
+    Ng2SmartTableModule,
   ],
-  providers: [NbSidebarService, UserService, ...NbMenuModule.forRoot().providers],
-  declarations: [DashboardComponent, HeaderComponent, InvitationComponent, HomeComponent]
+  providers: [
+    NbSidebarService,
+    UserService,
+    ...NbMenuModule.forRoot().providers,
+    InvitationsService,
+    EventsService
+  ],
+  declarations: [
+    DashboardComponent,
+    HeaderComponent,
+    InvitationComponent,
+    HomeComponent,
+    InvitationLinkComponent,
+    NewInvitationComponent,
+    EditInvitationComponent
+  ]
 })
-export class ManagerModule { }
+export class ManagerModule {
+}

@@ -9,9 +9,7 @@ import {NbMenuItem} from '@nebular/theme';
 export class DashboardComponent implements OnInit {
 
   menu: NbMenuItem[] = [
-    {title: 'Dashboard', link: '/', pathMatch: 'full'},
-    {title: 'Invitation', link: '/invitations', pathMatch: 'full'},
-    {title: 'Admin'},
+    {title: 'Invitations', link: '/invitations'},
   ];
 
   constructor() { }

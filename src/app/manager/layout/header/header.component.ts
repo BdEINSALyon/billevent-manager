@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import {UserService} from '../../data/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit {
   userMenu = [ { title: 'Déconnexion',  link: '/auth/logout'}];
 
   constructor(private sidebarService: NbSidebarService,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -34,5 +36,9 @@ export class HeaderComponent implements OnInit {
   toggleSettings(): boolean {
     this.sidebarService.toggle(false, 'settings-sidebar');
     return false;
+  }
+
+  goToHome(){
+    this.router.navigateByUrl('/');
   }
 }

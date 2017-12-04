@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>
+    <div class="pull-left">
+      Invitations</div>
+    <nb-actions class="pull-right">
+      <nb-action icon="nb-plus-circled" class="toggle-layout" (click)="newInvite()"></nb-action>
+    </nb-actions>
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table
+      [settings]="settings" [source]="invitationsService"
+      (userRowSelect)="userRowSelect($event)"
+    ></ng2-smart-table>
+  </nb-card-body>
+</nb-card>
