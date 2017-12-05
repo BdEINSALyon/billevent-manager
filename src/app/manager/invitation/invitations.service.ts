@@ -3,9 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import {LocalDataSource} from 'ng2-smart-table';
-import {Invitation} from '../data/invitations.service';
+import {Invitation as I} from '../data/invitations.service';
 
-export const Invitation = Invitation;
+export abstract class Invitation extends I {}
 
 @Injectable()
 export class InvitationsTableService extends LocalDataSource {

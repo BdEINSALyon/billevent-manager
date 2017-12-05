@@ -5,6 +5,9 @@ import { NbLogoutComponent } from './auth/logout/logout.component';
 import {NbAuthComponent} from '@nebular/auth';
 import {ManagerModule} from './manager/manager.module';
 
+export function loadChildren() {
+  return ManagerModule;
+}
 const routes: Routes = [
 
   {
@@ -27,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => ManagerModule
+    loadChildren
   }
 ];
 

@@ -15,6 +15,10 @@ import {AuthModule} from "./auth/auth.module";
 import {JwtModule} from '@auth0/angular-jwt';
 
 
+export function tokenGetter() {
+  return localStorage.getItem('auth_app_token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +45,7 @@ import {JwtModule} from '@auth0/angular-jwt';
     NbSidebarModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('auth_app_token');
-        },
+        tokenGetter: tokenGetter,
         authScheme: 'JWT ',
         whitelistedDomains: ['localhost:8000', 'api.billevent.bde-insa-lyon.fr']
       }
