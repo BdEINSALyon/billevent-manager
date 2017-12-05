@@ -47,7 +47,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         authScheme: 'JWT ',
-        whitelistedDomains: ['localhost:8000', 'api.billevent.bde-insa-lyon.fr']
+        whitelistedDomains: ['localhost:8000', 'api.billetterie.bde-insa-lyon.fr']
       }
     })
 
