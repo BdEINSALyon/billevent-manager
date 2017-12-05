@@ -9,16 +9,18 @@ import {UserService} from './data/user.service';
 import {JwtModule} from '@auth0/angular-jwt';
 import {InvitationComponent, InvitationLinkComponent} from './invitation/invitation.component';
 import {HomeComponent} from './home/home.component';
-import {InvitationsService} from './invitation/invitations.service';
+import {InvitationsTableService} from './invitation/invitations.service';
 import {EventsService} from './data/events.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NewInvitationComponent } from './invitation/new-invitation/new-invitation.component';
 import { EditInvitationComponent } from './invitation/edit-invitation/edit-invitation.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InvitationsService} from './data/invitations.service';
 
 
 @NgModule({
   imports: [
+    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     NbActionsModule,
@@ -34,6 +36,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     NbSidebarService,
     UserService,
     ...NbMenuModule.forRoot().providers,
+    InvitationsTableService,
     InvitationsService,
     EventsService
   ],

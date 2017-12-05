@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Invitation, InvitationsService} from './invitations.service';
+import {Invitation, InvitationsTableService} from './invitations.service';
 import {BilleventEvent, EventsService} from '../data/events.service';
 import {environment} from '../../../environments/environment';
 import {Router} from '@angular/router';
@@ -71,7 +71,7 @@ export class InvitationComponent implements OnInit {
 
 
   constructor(
-    public invitationsService: InvitationsService,
+    public invitationsService: InvitationsTableService,
     private eventService: EventsService,
     private router: Router) { }
 
@@ -81,6 +81,7 @@ export class InvitationComponent implements OnInit {
         return this.events = events;
       }
     );
+    this.invitationsService.load([]);
   }
 
   userRowSelect(event) {
